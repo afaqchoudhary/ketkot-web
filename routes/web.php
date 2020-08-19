@@ -16,6 +16,18 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+/*****************************************
+ * ------->[Login Routes]<-------
+ *****************************************/
+
+
+
+/**
+ * login route 
+ * 
+ * */
+Route::get('login','LoginController@Login')->name('login');
+
 
 Route::get('dashboard/dashboard', function () {
     return view('dashboard');
@@ -41,10 +53,7 @@ Route::get('accounts/approved', function () {
     return view('accounts/approved');
 });
 
-/**login route */
-Route::get('login', function () {
-    return view('login');
-});
+
 
 /**settings routes */
 Route::get('settings/ad', function () {
@@ -81,23 +90,45 @@ Route::get('payment', function () {
     return view('payment');
 });
 
-/** Subscription routes */
+/****************************************** 
+ * ------->[Subscription routes]<-------- 
+ * ****************************************/
 
-Route::get('subscription/add', function () {
-    return view('subscription/add');
-});
+ /**
+  * subscription/index
+  */
+Route::get('subscription/index','Admin\SubscriptionController@index')->name('subscription.index');
 
-Route::get('subscription/edit', function () {
-    return view('subscription/edit');
-});
+/**
+  * subscription/add
+  */
+Route::get('subscription/add','Admin\SubscriptionController@create')->name('subscription.add');
 
-Route::get('subscription/edit', function () {
-    return view('subscription/edit');
-});
+/**
+  * subscription/store
+  */
+  Route::post('subscription/store','Admin\SubscriptionController@store')->name('subscription.store');
 
-Route::get('subscription/index', function () {
-    return view('subscription/index');
-});
+  /**
+  * subscription/show
+  */
+  Route::get('subscription/show/{subscription_id}','Admin\SubscriptionController@show')->name('subscription.show');
+
+  /**
+  * subscription/edit
+  */
+  Route::get('subscription/edit/{subscription_id}','Admin\SubscriptionController@edit')->name('subscription.edit');
+
+  /**
+  * subscription/update
+  */
+  Route::post('subscription/update/{subscription_id}','Admin\SubscriptionController@update')->name('subscription.update');
+
+/**
+  * subscription/delete
+  */
+  Route::get('subscription/delete/{subscription_id}','Admin\SubscriptionController@delete')->name('subscription.delete');
+
 
 /** Gems routes */
 
@@ -168,3 +199,4 @@ Route::get('help/edit', function () {
 Route::get('help/index', function () {
     return view('help/index');
 });
+// Auth::routes();

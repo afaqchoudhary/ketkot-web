@@ -38,8 +38,8 @@
                                     <div class="col-md-6 ">
                                         <div class="form-group">
                                             <label>Site Name</label>
-                                            <input type="text" class="form-control" name="mail_driver"
-                                                value="{{ old('mail_driver') }}" placeholder="enter site name">
+                                            <input type="text" class="form-control" name="site_name"
+                                                value="{{ old('site_name') }}" placeholder="enter site name">
 
 
                                         </div>
@@ -48,8 +48,8 @@
                                     <div class="col-md-6 ">
                                         <div class="form-group">
                                             <label>Home Page Title</label>
-                                            <input type="text" class="form-control" name="host_name"
-                                                value="{{ old('host_name') }}" placeholder="enter home page title">
+                                            <input type="text" class="form-control" name="title"
+                                                value="{{ old('title') }}" placeholder="enter home page title">
 
 
                                         </div>

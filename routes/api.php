@@ -17,3 +17,17 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::group(['prefix' => 'auth/v1'], function () {
+
+Route::post('createProfile','API\ApiController@createProfile');
+
+Route::post('uploadVideo','API\ApiController@uploadVideo');
+
+Route::get('getAllVideos','API\ApiController@getAllVideos');
+
+Route::get('getAllAccounts','API\ApiController@getAllAccounts');
+
+Route::post('uploadAudio','API\ApiController@uploadAudio');
+
+});

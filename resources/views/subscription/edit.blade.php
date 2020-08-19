@@ -28,7 +28,7 @@
                         <!-- /.box-header -->
                         <div class="container-fluid">
 
-                            <form method="GET" action="{{URL('subscription/index')}}" enctype="multipart/form-data">
+                            <form method="POST" action="{{route('subscription.update',$subscription->subscription_id)}}" enctype="multipart/form-data">
                                 <div class="box-body">
                                     @csrf
                                     @if (session('error'))
@@ -38,8 +38,8 @@
                                     <div class="col-md-4 col-md-offset-4">
                                         <div class="form-group">
                                             <label>Title</label>
-                                            <input type="text" class="form-control" name="mail_driver"
-                                                value="{{ old('mail_driver') }}" placeholder="enter title">
+                                            <input type="text" class="form-control" name="subscription_title"
+                                                value="{{ old('subscription_title',$subscription->subscription_title) }}" placeholder="enter title">
 
 
                                         </div>
@@ -48,8 +48,8 @@
                                     <div class="col-md-4 col-md-offset-4">
                                         <div class="form-group">
                                             <label>No of Gems </label>
-                                            <input type="number" class="form-control" name="host_name"
-                                                value="{{ old('host_name') }}" placeholder="enter no of gems">
+                                            <input type="number" class="form-control" name="subscription_gems"
+                                                value="{{ old('subscription_gems',$subscription->subscription_gems) }}" placeholder="enter no of gems">
 
 
                                         </div>
@@ -58,8 +58,8 @@
                                     <div class="col-md-4 col-md-offset-4">
                                         <div class="form-group">
                                             <label>Price</label>
-                                            <input type="number" class="form-control" name="port_no"
-                                                value="{{ old('port_no') }}" placeholder="enter price">
+                                            <input type="number" class="form-control" name="subscription_price"
+                                                value="{{ old('subscription_price',$subscription->subscription_price) }}" placeholder="enter price">
 
 
                                         </div>
@@ -68,10 +68,10 @@
                                     <div class="col-md-4 col-md-offset-4">
                                         <div class="form-group">
                                             <label>Platform</label>
-                                            <div><input type="radio" name="optionsRadios" id="optionsRadios1"
-                                                    value="option1" checked>Android</div>
+                                            <div><input type="radio" name="platform" id="optionsRadios1"
+                                                    value="android" checked>Android</div>
 
-                                            <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1"
+                                            <input type="radio" name="platform" id="optionsRadios1" value="ios"
                                                 checked>Ios
 
 
@@ -81,12 +81,14 @@
                                     <div class="col-md-4 col-md-offset-4">
                                         <div class="form-group">
                                             <label>Validity</label>
-                                            <select class="form-control select2" name="country_id" style="width: 100%;"
+                                            <select class="form-control select2" name="subscription_validity" style="width: 100%;"
                                                 placeholder="select country please">
                                                 <option value="">--select validity--</option>
-                                                <option value="">1 month</option>
-                                                <option value="">3 months</option>
-                                                <option value="">6 months</option>
+                                                <option value="" @if(old( 'subscription_validity' ) == "" ) selected @endif>--select validity--</option>
+                                                <option value="1 month" @if(old( 'subscription_validity' ) == "1 month" ) selected @endif>1 month</option>
+                                                <option value="3 months" @if(old( 'subscription_validity' ) == "3 months" ) selected @endif>3 months</option>
+                                                <option value="6 months" @if(old( 'subscription_validity' ) == "6 months" ) selected @endif>6 months</option>
+                                                <option value="1 year" @if(old( 'subscription_validity' ) == "1 year" ) selected @endif>1 year</option>
                                             </select>
 
                                         </div>

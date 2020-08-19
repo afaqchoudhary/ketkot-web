@@ -38,24 +38,16 @@
                                     <div class="col-md-4 col-md-offset-4">
                                         <div class="form-group">
                                             <label>Slider Title </label>
-                                            <input type="text" class="form-control" name="mail_driver"
-                                                value="{{ old('mail_driver') }}" placeholder="enter gems package name ">
-
-
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-4 col-md-offset-4">
-                                        <div class="form-group">
-                                            <label>Slider Description</label>
-                                            <input type="number" class="form-control" name="host_name"
-                                                value="{{ old('host_name') }}" placeholder="enter no of gems">
-
+                                            <input type="text" class="form-control" name="slider_title"
+                                                value="{{ old('slider_title') }}" placeholder="enter slider title ">
+                                                @if ($errors->has('slider_title'))
+                                    <div class="danger">{{ $errors->first('slider_title') }}</div>
+                                    @endif
 
                                         </div>
                                     </div>
 
-
+                                   
                                    
                             <div class="col-md-4 col-md-offset-4">
                                 <div class="form-group">
@@ -67,6 +59,17 @@
                                 </div>
                             </div>
                        
+                            <div class="col-md-4 col-md-offset-4">
+                                        <div class="form-group">
+                                            <label>Slider Description</label>
+                                            <input type="text" class="form-control" name="host_name"
+                                                value="{{ old('host_name') }}" placeholder="enter slider description">
+                                                @if ($errors->has('host_name'))
+                                    <div class="danger">{{ $errors->first('host_name') }}</div>
+                                    @endif
+
+                                        </div>
+                                    </div>
 
 
 

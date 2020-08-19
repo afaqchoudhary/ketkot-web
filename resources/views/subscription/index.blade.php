@@ -57,7 +57,7 @@
                         </div>
                         <!-- /.box-header -->
                         <div class="container-fluid">
-
+                        @if ($subcriptions->count() > 0)
                             <table class="table table-striped">
                                 <thead>
                                     <tr>
@@ -71,29 +71,29 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-
+                                @foreach($subcriptions as $subcription)
                                     <tr>
-                                        <td class="text-center">1</td>
-                                        <td class="text-center">Silver_one_month</td>
-                                        <td class="text-center">10</td>
-                                        <td class="text-center">10</td>
-                                        <td class="text-center">1M</td>
+                                        <td class="text-center">{{$subcription->subscription_id}}</td>
+                                        <td class="text-center">{{$subcription->subscription_title}}</td>
+                                        <td class="text-center">{{$subcription->subscription_gems}}</td>
+                                        <td class="text-center">{{$subcription->subscription_price}}</td>
+                                        <td class="text-center">{{$subcription->subscription_validity}}</td>
                                         <td class="text-center">0</td>
 
                                         <td class="text-center">
-                                            <a href="" class="btn btn-primary">
+                                            <a href="{{route('subscription.show',$subcription->subscription_id)}}" class="btn btn-primary">
                                                 <i class="fa fa-eye">
                                                 </i>
                                             </a>
-                                            <a href="{{URL('subscription/edit')}}" class="btn btn-primary">
+                                            <a href="{{route('subscription.edit',$subcription->subscription_id)}}" class="btn btn-primary">
                                                 <i class="fa fa-edit">
                                                 </i>
                                             </a>
-                                            <a class="btn btn-primary" data-toggle="modal" data-target="#modal-default">
+                                            <a class="btn btn-primary" data-toggle="modal" data-target="#modal-default{{$subcription->subscription_id}}">
                                                 <i class="fa fa-trash" aria-hidden="true"></i>
                                             </a>
                                         </td>
-                                        <div class="modal fade" id="modal-default">
+                                        <div class="modal fade" id="modal-default{{$subcription->subscription_id}}">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
@@ -102,16 +102,16 @@
                                                             <span aria-hidden="true">&times;
                                                             </span>
                                                         </button>
-                                                        <h4 class="modal-title">Delete Category
+                                                        <h4 class="modal-title">Delete Subscription
                                                         </h4>
                                                     </div>
                                                     <div class="modal-body">
-                                                        <p>Do you want to delete this category?</p>
+                                                        <p>Do you want to delete this Subscription?</p>
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-default pull-left"
                                                             data-dismiss="modal">No</button>
-                                                        <a href="#" type="submit" class="btn btn-primary">
+                                                        <a href="{{route('subscription.delete',$subcription->subscription_id)}}" type="submit" class="btn btn-primary">
                                                             Yes</a>
                                                     </div>
                                                 </div>
@@ -122,9 +122,13 @@
                                         <!-- /.modal -->
 
                                     </tr>
-
+                                    @endforeach
 
                                 </tbody>
+                                {{$subcriptions->links()}}
+                                @else
+                                <h3 class="text-center">no subcriptions found</h3>
+                                @endif
                             </table>
 
 
