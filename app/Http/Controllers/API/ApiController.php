@@ -15,38 +15,6 @@ class ApiController extends Controller
 {
 
     /**
-     * $SUCCESS_STATUS
-     *
-     * @var integer
-     * all fine (ok)
-     */
-    public $SUCCESS_STATUS = 200;
-
-    /**
-     * $VALIDATION_ERROR
-     *
-     * @var integer
-     * some error in validation (bad request)
-     */
-    public $VALIDATION_ERROR = 400;
-
-    /**
-     * $FAILURE_STATUS
-     *
-     * @var integer
-     * faliure status (not modified)
-     */
-    public $FAILURE_STATUS = 304;
-
-    /**
-     * $DATA_NOT_FOUND
-     *
-     * @var integer
-     * if all set but no data found (no content)
-     */
-    public $DATA_NOT_FOUND = 204;
-
-    /**
      * createProfile
      *
      * @return success status
@@ -59,7 +27,6 @@ class ApiController extends Controller
         $validator = Validator::make($request->all(),
             [
                 'account_name' => 'required',
-                'account_mail' => 'required',
                 'account_gender' => 'required',
                 'account_birthday' => 'required',
                 'account_country' => 'required',
@@ -101,7 +68,6 @@ class ApiController extends Controller
             }
         }
     }
-
 
     /**
      * uploadVideo
