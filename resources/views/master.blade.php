@@ -671,7 +671,7 @@
     })
 
     $(function() {
-        $('.is-account-blocked').change(function() {
+        $('.is-account-active').change(function() {
             var status = $(this).prop('checked') == true ? 1 : 0;
             var id = $(this).data('id');
 
