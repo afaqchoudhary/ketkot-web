@@ -28,7 +28,7 @@
                         <!-- /.box-header -->
                         <div class="container-fluid">
 
-                            <form method="GET" action="{{URL('gift/index')}}" enctype="multipart/form-data">
+                            <form method="POST" action="{{route('gift.store')}}" enctype="multipart/form-data">
                                 <div class="box-body">
                                     @csrf
                                     @if (session('error'))
@@ -38,19 +38,24 @@
                                     <div class="col-md-4 col-md-offset-4">
                                         <div class="form-group">
                                             <label>Gift Title </label>
-                                            <input type="text" class="form-control" name="mail_driver"
-                                                value="{{ old('mail_driver') }}" placeholder="enter gems package name ">
-
+                                            <input type="text" class="form-control" name="gift_title"
+                                                value="{{ old('gift_title') }}" placeholder="enter gift package name ">
+                                            @if ($errors->has('gift_title'))
+                                            <div class="danger">{{ $errors->first('gift_title') }}</div>
+                                            @endif
 
                                         </div>
                                     </div>
 
                                     <div class="col-md-4 col-md-offset-4">
                                         <div class="form-group">
-                                            <label>Gems Count for prime account  </label>
-                                            <input type="number" class="form-control" name="host_name"
-                                                value="{{ old('host_name') }}" placeholder="enter no of gems">
-
+                                            <label>Gems Count for prime account </label>
+                                            <input type="number" class="form-control" name="gift_gems_prime"
+                                                value="{{ old('gift_gems_prime') }}"
+                                                placeholder="enter gems count for prime">
+                                            @if ($errors->has('gift_gems_prime'))
+                                            <div class="danger">{{ $errors->first('gift_gems_prime') }}</div>
+                                            @endif
 
                                         </div>
                                     </div>
@@ -58,26 +63,29 @@
                                     <div class="col-md-4 col-md-offset-4">
                                         <div class="form-group">
                                             <label>Gems Count for non-prime account</label>
-                                            <input type="number" class="form-control" name="port_no"
-                                                value="{{ old('port_no') }}" placeholder="enter price">
-
+                                            <input type="number" class="form-control" name="gift_gems"
+                                                value="{{ old('gift_gems') }}"
+                                                placeholder="enter gems count for non prime">
+                                            @if ($errors->has('gift_gems'))
+                                            <div class="danger">{{ $errors->first('gift_gems') }}</div>
+                                            @endif
 
                                         </div>
                                     </div>
 
-                                    
 
-                                   
-                            <div class="col-md-4 col-md-offset-4">
-                                <div class="form-group">
-                                    <label>Gift icon  </label>
-                                    <input type="file" class="form-control" name="footer_logo">
-                                    @if ($errors->has('footer_logo'))
-                                    <div class="danger">{{ $errors->first('footer_logo') }}</div>
-                                    @endif
-                                </div>
-                            </div>
-                       
+
+
+                                    <div class="col-md-4 col-md-offset-4">
+                                        <div class="form-group">
+                                            <label>Gift icon </label>
+                                            <input type="file" class="form-control" name="gift_icon">
+                                            @if ($errors->has('gift_icon'))
+                                            <div class="danger">{{ $errors->first('gift_icon') }}</div>
+                                            @endif
+                                        </div>
+                                    </div>
+
 
 
 

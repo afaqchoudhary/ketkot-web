@@ -32,7 +32,7 @@ class User extends Authenticatable
     protected $fillable = [
         'account_live',
         'account_membership',
-        'account_status',
+        'is_blocked',
         'account_gems',
         'account_gifts',
         'account_gift_earnings',

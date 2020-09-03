@@ -7,7 +7,7 @@
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <h1>
-    Group
+        Group
         <small>Preview</small>
     </h1>
 </section>
@@ -35,13 +35,13 @@
                                 </div>
                             </div>
 
-                            
-                    </div>
-                    <!-- /.box-body -->
 
-                    <div class="box-footer text-center">
-                        <button type="submit" class="btn btn-primary">Search</button>
-                    </div>
+                        </div>
+                        <!-- /.box-body -->
+
+                        <div class="box-footer text-center">
+                            <button type="submit" class="btn btn-primary">Search</button>
+                        </div>
                 </form>
             </div>
             <!-- /.box -->
@@ -53,7 +53,7 @@
                         <div class="box-header">
                             <h3 class="box-title">Account List</h3>
 
-                            
+
                         </div>
                         <!-- /.box-header -->
                         <div class="container-fluid">
@@ -85,11 +85,12 @@
                                                 <span class="slider round"></span>
                                                 </br>
                                             </label></td>
-                                            <td class="text-center"><a href="" class="btn btn-primary">
+                                        <td class="text-center"><a href="{{URL('accounts/show')}}"
+                                                class="btn btn-primary">
                                                 <i class="fa fa-eye">
                                                 </i>
                                             </a></td>
-                                      
+
 
                                     </tr>
 

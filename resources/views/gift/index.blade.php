@@ -7,7 +7,7 @@
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <h1>
-    Gift Packs
+        Gift Packs
         <small>Preview</small>
     </h1>
 </section>
@@ -24,13 +24,13 @@
                 </div>
                 <!-- /.box-header -->
                 <!-- form start -->
-                <form method="GET" action="#">
+                <form method="GET" action="{{route('gift.index')}}">
                     <div class="box-body">
                         <div class="row">
                             <div class="col-md-4 col-md-offset-4">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Gift Title</label>
-                                    <input type="text" class="form-control" id="exampleInputEmail1" name="category_name"
+                                    <input type="text" class="form-control" id="exampleInputEmail1" name="gift_title"
                                         placeholder="search by gift title">
                                 </div>
                             </div>
@@ -52,11 +52,11 @@
                         <div class="box-header">
                             <h3 class="box-title">Gift Packs List</h3>
 
-                         
+
                         </div>
                         <!-- /.box-header -->
                         <div class="container-fluid">
-
+                            @if ($gifts->count() > 0)
                             <table class="table table-striped">
                                 <thead>
                                     <tr>
@@ -69,25 +69,28 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-
+                                    @foreach($gifts as $gift)
                                     <tr>
-                                        <td class="text-center">1</td>
-                                        <td class="text-center">Test 2</td>
-                                        <td class="text-center"><img src="{{URL::asset('style/dist/img/diamond.png')}}" class="img-circle" style="height:20px; width:20px"></td>
-                                        <td class="text-center">100</td>
-                                        <td class="text-center">20</td>
+                                        <td class="text-center">{{$gift->gift_id}}</td>
+                                        <td class="text-center">{{$gift->gift_title}}</td>
+                                        <td class="text-center"><img
+                                                src="{{URL::asset($gift->gift_icon_path.$gift->gift_icon_name)}}"
+                                                class="img-circle" style="height:20px; width:20px"></td>
+                                        <td class="text-center">{{$gift->gift_gems_prime}}</td>
+                                        <td class="text-center">{{$gift->gift_gems}}</td>
 
                                         <td class="text-center">
-                                           
-                                            <a href="{{URL('gift/edit')}}" class="btn btn-primary">
+
+                                            <a href="{{route('gift.edit',$gift->gift_id)}}" class="btn btn-primary">
                                                 <i class="fa fa-edit">
                                                 </i>
                                             </a>
-                                            <a class="btn btn-primary" data-toggle="modal" data-target="#modal-default">
+                                            <a class="btn btn-primary" data-toggle="modal"
+                                                data-target="#modal-default{{$gift->gift_id}}">
                                                 <i class="fa fa-trash" aria-hidden="true"></i>
                                             </a>
                                         </td>
-                                        <div class="modal fade" id="modal-default">
+                                        <div class="modal fade" id="modal-default{{$gift->gift_id}}">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
@@ -96,16 +99,17 @@
                                                             <span aria-hidden="true">&times;
                                                             </span>
                                                         </button>
-                                                        <h4 class="modal-title">Delete Category
+                                                        <h4 class="modal-title">Delete Gift Package
                                                         </h4>
                                                     </div>
                                                     <div class="modal-body">
-                                                        <p>Do you want to delete this category?</p>
+                                                        <p>Do you want to delete this gift package?</p>
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-default pull-left"
                                                             data-dismiss="modal">No</button>
-                                                        <a href="#" type="submit" class="btn btn-primary">
+                                                        <a href="{{route('gift.delete',$gift->gift_id)}}" type="submit"
+                                                            class="btn btn-primary">
                                                             Yes</a>
                                                     </div>
                                                 </div>
@@ -116,11 +120,14 @@
                                         <!-- /.modal -->
 
                                     </tr>
-
+                                    @endforeach
 
                                 </tbody>
                             </table>
-
+                            {{$gifts->links()}}
+                            @else
+                            <h3 class="text-center">no gifts packages found</h3>
+                            @endif
 
 
 
