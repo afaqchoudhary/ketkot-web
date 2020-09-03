@@ -12,9 +12,29 @@ class AccountController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function pendingAccounts(Request $request)
     {
-        //
+        // try {
+        //     $accounts = User::query();
+
+        //     if (isset($request->account_name)) {
+
+        //         //filter data according to user name
+        //         $accounts = $accounts->where('account_name', 'LIKE', '%' . $request->account_name . '%');
+
+        //     }
+
+        //     $accounts = $accounts->paginate(5);
+
+        //     return view('accounts.pending')->with('accounts', $accounts);
+
+        // } catch (\Illuminate\Database\QueryException $execption) {
+
+        //     return back()->withError($execption->getMessage())->withInput();
+        // } catch (Exception $execption) {
+        //     return back()->withError($execption->getMessage())->withInput();
+        // }
+
     }
 
     /**
@@ -22,9 +42,9 @@ class AccountController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function accountApproved()
     {
-        //
+        // return view('accounts.approved');
     }
 
     /**

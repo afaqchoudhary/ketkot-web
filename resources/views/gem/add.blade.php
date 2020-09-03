@@ -28,7 +28,7 @@
                         <!-- /.box-header -->
                         <div class="container-fluid">
 
-                            <form method="GET" action="{{URL('gem/index')}}" enctype="multipart/form-data">
+                            <form method="POST" action="{{route('gem.store')}}" enctype="multipart/form-data">
                                 <div class="box-body">
                                     @csrf
                                     @if (session('error'))
@@ -38,8 +38,11 @@
                                     <div class="col-md-4 col-md-offset-4">
                                         <div class="form-group">
                                             <label>Gems Package name </label>
-                                            <input type="text" class="form-control" name="mail_driver"
-                                                value="{{ old('mail_driver') }}" placeholder="enter gems package name ">
+                                            <input type="text" class="form-control" name="gem_title"
+                                                value="{{ old('gem_title') }}" placeholder="enter gems package name ">
+                                            @if ($errors->has('gem_title'))
+                                            <div class="danger">{{ $errors->first('gem_title') }}</div>
+                                            @endif
 
 
                                         </div>
@@ -48,9 +51,12 @@
                                     <div class="col-md-4 col-md-offset-4">
                                         <div class="form-group">
                                             <label>Gems Count </label>
-                                            <input type="number" class="form-control" name="host_name"
-                                                value="{{ old('host_name') }}" placeholder="enter no of gems">
+                                            <input type="number" class="form-control" name="gem_count"
+                                                value="{{ old('gem_count') }}" placeholder="enter no of gems">
 
+                                            @if ($errors->has('gem_count'))
+                                            <div class="danger">{{ $errors->first('gem_count') }}</div>
+                                            @endif
 
                                         </div>
                                     </div>
@@ -58,9 +64,12 @@
                                     <div class="col-md-4 col-md-offset-4">
                                         <div class="form-group">
                                             <label>Gem Package Price</label>
-                                            <input type="number" class="form-control" name="port_no"
-                                                value="{{ old('port_no') }}" placeholder="enter price">
+                                            <input type="number" class="form-control" name="gem_price"
+                                                value="{{ old('gem_price') }}" placeholder="enter price">
 
+                                            @if ($errors->has('gem_price'))
+                                            <div class="danger">{{ $errors->first('gem_price') }}</div>
+                                            @endif
 
                                         </div>
                                     </div>
@@ -68,27 +77,26 @@
                                     <div class="col-md-4 col-md-offset-4">
                                         <div class="form-group">
                                             <label>Platform</label>
-                                            <div><input type="radio" name="optionsRadios" id="optionsRadios1"
-                                                    value="option1" checked>Android</div>
+                                            <div><input type="radio" name="platform" id="platform" value="android"
+                                                    checked>Android</div>
 
-                                            <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1"
-                                                checked>Ios
+                                            <input type="radio" name="platform" id="platform" value="ios" checked>Ios
 
 
                                         </div>
                                     </div>
 
-                                   
-                            <div class="col-md-4 col-md-offset-4">
-                                <div class="form-group">
-                                    <label>Gem Package icon </label>
-                                    <input type="file" class="form-control" name="footer_logo">
-                                    @if ($errors->has('footer_logo'))
-                                    <div class="danger">{{ $errors->first('footer_logo') }}</div>
-                                    @endif
-                                </div>
-                            </div>
-                       
+
+                                    <div class="col-md-4 col-md-offset-4">
+                                        <div class="form-group">
+                                            <label>Gem Package icon </label>
+                                            <input type="file" class="form-control" name="gem_icon">
+                                            @if ($errors->has('gem_icon'))
+                                            <div class="danger">{{ $errors->first('gem_icon') }}</div>
+                                            @endif
+                                        </div>
+                                    </div>
+
 
 
 

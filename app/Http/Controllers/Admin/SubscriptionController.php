@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Subscription;
 use Carbon\Carbon;
+use Exception;
 use Illuminate\Http\Request;
 
 class SubscriptionController extends Controller
@@ -17,7 +18,7 @@ class SubscriptionController extends Controller
     public function index()
     {
         $subcriptions = Subscription::OrderBy('created_at')->paginate(10);
-        return view('subscription.index')->with('subcriptions',$subcriptions);
+        return view('subscription.index')->with('subcriptions', $subcriptions);
     }
 
     /**
@@ -47,7 +48,7 @@ class SubscriptionController extends Controller
             'subscription_gems' => 'required|numeric',
             'subscription_price' => 'required|numeric',
             'subscription_validity' => 'required',
-            'platform' => 'required'
+            'platform' => 'required',
 
         ]);
 
@@ -74,6 +75,8 @@ class SubscriptionController extends Controller
 
         } catch (\Illuminate\Database\QueryException $execption) {
             return back()->withError($execption->getMessage())->withInput();
+        } catch (Exception $exception) {
+            return back()->withError($exception->getMessage())->withInput();
         }
     }
 
@@ -85,8 +88,8 @@ class SubscriptionController extends Controller
      */
     public function show($subscription_id)
     {
-        $subscription = Subscription::where('subscription_id',$subscription_id)->first();
-        return view('subscription.show')->with('subscription',$subscription);
+        $subscription = Subscription::where('subscription_id', $subscription_id)->first();
+        return view('subscription.show')->with('subscription', $subscription);
     }
 
     /**
@@ -97,8 +100,8 @@ class SubscriptionController extends Controller
      */
     public function edit($subscription_id)
     {
-        $subscription = Subscription::where('subscription_id',$subscription_id)->first();
-        return view('subscription.edit')->with('subscription',$subscription);
+        $subscription = Subscription::where('subscription_id', $subscription_id)->first();
+        return view('subscription.edit')->with('subscription', $subscription);
     }
 
     /**
@@ -110,17 +113,16 @@ class SubscriptionController extends Controller
      */
     public function update(Request $request, $subscription_id)
     {
-         /**
+        /**
          * validate request
          */
         $this->validate($request, [
 
-            
             'subscription_title' => 'required',
             'subscription_gems' => 'required|numeric',
             'subscription_price' => 'required|numeric',
             'subscription_validity' => 'required',
-            'platform' => 'required'
+            'platform' => 'required',
         ]);
 
         /**
@@ -155,7 +157,7 @@ class SubscriptionController extends Controller
     public function destroy($subscription_id)
     {
         $subscription = Subscription::where('subscription_id', $subscription_id)->delete();
-            return redirect()->route('city.index');
+        return redirect()->route('city.index');
 
     }
 }
