@@ -162,7 +162,7 @@
                 <!-- sidebar menu: : style can be found in sidebar.less -->
                 <ul class="sidebar-menu" data-widget="tree">
                     <li class="header">MAIN NAVIGATION</li>
-                    <li class=""><a href="{{URL('dashboard/dashboard')}}"><i class="fa fa-dashboard"></i>Dashboard</a>
+                    <li class=""><a href="{{URL('dashboard')}}"><i class="fa fa-dashboard"></i>Dashboard</a>
                     </li>
                     <li class=""><a href="{{URL('statistics')}}"><i class="fa fa-bar-chart"></i>Statistics</a></li>
 
@@ -259,8 +259,8 @@
                             </span>
                         </a>
                         <ul class="treeview-menu">
-                            <li><a href="{{URL('slider/add')}}"><i class="fa fa-plus-square"></i>New Slider</a></li>
-                            <li><a href="{{URL('slider/index')}}"><i class="fa fa-calendar"></i>Manage Slider</a></li>
+                            <li><a href="{{route('slider.add')}}"><i class="fa fa-plus-square"></i>New Slider</a></li>
+                            <li><a href="{{route('slider.index')}}"><i class="fa fa-calendar"></i>Manage Slider</a></li>
                         </ul>
                     </li>
 

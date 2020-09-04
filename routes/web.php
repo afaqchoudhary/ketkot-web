@@ -73,12 +73,6 @@ Route::get('account/isBlock', 'Admin\AccountController@isBlocked');
  */
 Route::get('account/show/{id}', 'Admin\AccountController@show')->name('show.accounts');
 
-// /**
-//  *
-//  *  account/approved
-//  */
-// Route::get('account/approved', 'Admin\AccountController@accountApproved')->name('approved.accounts');
-
 /**settings routes */
 Route::get('settings/ad', function () {
     return view('settings/ad');
@@ -245,19 +239,49 @@ Route::post('gift/update/icon/{gift_id}', 'Admin\GiftController@updateGiftIcon')
  */
 Route::get('gift/delete/{gift_id}', 'Admin\GemController@destroy')->name('gift.delete');
 
-/** Slider routes */
+/******************************************
+ * ------->[Slider routes]<--------
+ * ****************************************/
 
-Route::get('slider/add', function () {
-    return view('slider/add');
-});
+/**
+ * slider/index
+ */
+Route::get('slider/index', 'Admin\SliderController@index')->name('slider.index');
 
-Route::get('slider/edit', function () {
-    return view('slider/edit');
-});
+/**
+ * slider/add
+ */
+Route::get('slider/add', 'Admin\SliderController@create')->name('slider.add');
 
-Route::get('slider/index', function () {
-    return view('slider/index');
-});
+/**
+ * slider/store
+ */
+Route::post('slider/store', 'Admin\SliderController@store')->name('slider.store');
+
+/**
+ * slider/show
+ */
+Route::get('slider/show/{slider_id}', 'Admin\SliderController@show')->name('slider.show');
+
+/**
+ * slider/edit
+ */
+Route::get('slider/edit/{slider_id}', 'Admin\SliderController@edit')->name('slider.edit');
+
+/**
+ * slider/update
+ */
+Route::post('slider/update/{slider_id}', 'Admin\SliderController@update')->name('slider.update');
+
+/**
+ * slider/update
+ */
+Route::post('slider/update/image/{slider_id}', 'Admin\SliderController@updateSliderImage')->name('sliderImage.update');
+
+/**
+ * subscription/delete
+ */
+Route::get('slider/delete/{slider_id}', 'Admin\SliderController@destroy')->name('slider.delete');
 
 /** Report routes */
 
@@ -273,16 +297,36 @@ Route::get('report/index', function () {
     return view('report/index');
 });
 
-/** Help routes */
+/******************************************
+ * ------->[Help routes]<--------
+ * ****************************************/
 
-Route::get('help/add', function () {
-    return view('help/add');
-});
+/**
+ * help/index
+ */
+Route::get('help/index', 'Admin\HelpController@index')->name('help.index');
 
-Route::get('help/edit', function () {
-    return view('help/edit');
-});
+/**
+ * help/add
+ */
+Route::get('help/add', 'Admin\HelpController@create')->name('help.add');
 
-Route::get('help/index', function () {
-    return view('help/index');
-});
+/**
+ * help/store
+ */
+Route::post('help/store', 'Admin\HelpController@store')->name('help.store');
+
+/**
+ * help/show
+ */
+Route::get('help/show/{help_info_id}', 'Admin\HelpController@show')->name('help.show');
+
+/**
+ * help/edit
+ */
+Route::get('help/edit/{help_info_id}', 'Admin\HelpController@edit')->name('help.edit');
+
+/**
+ * help/update
+ */
+Route::post('help/update/{help_info_id}', 'Admin\HelpController@update')->name('help.update');

@@ -114,7 +114,8 @@
                     src="{{URL::asset($gems->gem_icon_path.$gems->gem_icon_name)}}" alt="gem icon picture"
                     style="width: 100%; height: 300px">
                 <div class="card-footer text-center">
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#gem_image_modal">
+                    <button type="button" class="btn btn-primary" data-toggle="modal"
+                        data-target="#gem_image_modal{{$gems->gem_id}}">
                         Update Gem Icon
                     </button>
                 </div>
@@ -122,7 +123,7 @@
         </div>
 
         <!--model for update logo start-->
-        <div class="modal fade" id="gem_image_modal">
+        <div class="modal fade" id="gem_image_modal{{$gems->gem_id}}">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">

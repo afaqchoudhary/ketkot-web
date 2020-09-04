@@ -21,14 +21,14 @@
                 <div class="col-xs-12">
                     <div class="box box-primary">
                         <div class="box-header">
-                            <h3 class="box-title">Update Report Titles</h3>
+                            <h3 class="box-title">New Help page </h3>
 
 
                         </div>
                         <!-- /.box-header -->
                         <div class="container-fluid">
 
-                            <form method="GET" action="{{URL('help/index')}}" enctype="multipart/form-data">
+                            <form method="POST" action="{{route('help.store')}}" enctype="multipart/form-data">
                                 <div class="box-body">
                                     @csrf
                                     @if (session('error'))
@@ -38,8 +38,8 @@
                                     <div class="col-md-12 ">
                                         <div class="form-group">
                                             <label>Title</label>
-                                            <input type="text" class="form-control" name="mail_driver"
-                                                value="{{ old('mail_driver') }}" placeholder="enter title ">
+                                            <input type="text" class="form-control" name="help_title"
+                                                value="{{ old('help_title') }}" placeholder="enter title ">
 
                                         </div>
                                     </div>
@@ -48,7 +48,8 @@
                                         <div class="form-group">
                                             <label>Description</label>
                                             <textarea class="textarea" placeholder="Place some text here"
-                          style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+                                                name="help_description"
+                                                style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
 
                                         </div>
                                     </div>

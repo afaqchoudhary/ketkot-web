@@ -157,7 +157,7 @@ class SubscriptionController extends Controller
     public function destroy($subscription_id)
     {
         $subscription = Subscription::where('subscription_id', $subscription_id)->delete();
-        return redirect()->route('city.index');
+        return redirect()->route('subscription.index');
 
     }
 }

@@ -28,7 +28,7 @@
                         <!-- /.box-header -->
                         <div class="container-fluid">
 
-                            <form method="GET" action="{{URL('slider/index')}}" enctype="multipart/form-data">
+                            <form method="POST" action="{{route('slider.store')}}" enctype="multipart/form-data">
                                 <div class="box-body">
                                     @csrf
                                     @if (session('error'))
@@ -40,34 +40,22 @@
                                             <label>Slider Title </label>
                                             <input type="text" class="form-control" name="slider_title"
                                                 value="{{ old('slider_title') }}" placeholder="enter slider title ">
-                                                @if ($errors->has('slider_title'))
-                                    <div class="danger">{{ $errors->first('slider_title') }}</div>
-                                    @endif
+                                            @if ($errors->has('slider_title'))
+                                            <div class="danger">{{ $errors->first('slider_title') }}</div>
+                                            @endif
 
                                         </div>
                                     </div>
 
-                                   
-                                   
-                            <div class="col-md-4 col-md-offset-4">
-                                <div class="form-group">
-                                    <label>Slider Image</label>
-                                    <input type="file" class="form-control" name="footer_logo">
-                                    @if ($errors->has('footer_logo'))
-                                    <div class="danger">{{ $errors->first('footer_logo') }}</div>
-                                    @endif
-                                </div>
-                            </div>
-                       
-                            <div class="col-md-4 col-md-offset-4">
-                                        <div class="form-group">
-                                            <label>Slider Description</label>
-                                            <input type="text" class="form-control" name="host_name"
-                                                value="{{ old('host_name') }}" placeholder="enter slider description">
-                                                @if ($errors->has('host_name'))
-                                    <div class="danger">{{ $errors->first('host_name') }}</div>
-                                    @endif
 
+
+                                    <div class="col-md-4 col-md-offset-4">
+                                        <div class="form-group">
+                                            <label>Slider Image</label>
+                                            <input type="file" class="form-control" name="slider_image">
+                                            @if ($errors->has('slider_image'))
+                                            <div class="danger">{{ $errors->first('slider_image') }}</div>
+                                            @endif
                                         </div>
                                     </div>
 

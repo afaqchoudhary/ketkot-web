@@ -28,7 +28,8 @@
                         <!-- /.box-header -->
                         <div class="container-fluid">
 
-                            <form method="GET" action="{{URL('help/index')}}" enctype="multipart/form-data">
+                            <form method="POST" action="{{route('help.update',$help->help_info_id)}}"
+                                enctype="multipart/form-data">
                                 <div class="box-body">
                                     @csrf
                                     @if (session('error'))
@@ -38,8 +39,12 @@
                                     <div class="col-md-12 ">
                                         <div class="form-group">
                                             <label>Title</label>
-                                            <input type="text" class="form-control" name="mail_driver"
-                                                value="{{ old('mail_driver') }}" placeholder="enter title ">
+                                            <input type="text" class="form-control" name="help_title"
+                                                value="{{ old('help_title',$help->help_title) }}"
+                                                placeholder="enter title ">
+                                            @if ($errors->has('help_title'))
+                                            <div class="danger">{{ $errors->first('help_title') }}</div>
+                                            @endif
 
                                         </div>
                                     </div>
@@ -48,8 +53,12 @@
                                         <div class="form-group">
                                             <label>Description</label>
                                             <textarea class="textarea" placeholder="Place some text here"
-                          style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
-
+                                                name="help_description"
+                                                value="{{old('help_description',$help->help_description)}}"
+                                                style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+                                            @if ($errors->has('help_description'))
+                                            <div class="danger">{{ $errors->first('help_description') }}</div>
+                                            @endif
                                         </div>
                                     </div>
 
